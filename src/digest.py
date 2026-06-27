@@ -37,6 +37,8 @@ def ensure_dirs():
         with open(LOGS_FILE, 'w') as f:
             json.dump([], f, indent=2)
 
+ensure_dirs() # Run immediately on module import to guarantee directories exist
+
 # ── Core Database Mapping ──────────────────────────────────────────────────────
 def get_upcoming_interviews(ref_date_str=None):
     """
