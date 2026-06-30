@@ -36,6 +36,10 @@ flowchart TD
         A[(interviews.json)]
     end
 
+    subgraph Web_Dashboard [Web Dashboard]
+        UI[index.html / main.js]
+    end
+
     subgraph Core_Engine [Core Engine]
         B[get_upcoming_interviews]
         C[build_digest]
@@ -51,6 +55,10 @@ flowchart TD
     subgraph Delivery_Layer [Delivery Layer]
         H[send_digest_for_recipient]
     end
+
+    UI -->|Manage Interviews| A
+    UI -->|Trigger Preview /api/generate| B
+    UI -->|Trigger Dispatch /api/send| H
 
     A -->|Read & Filter| B
     B -->|InterviewEvent List| H
