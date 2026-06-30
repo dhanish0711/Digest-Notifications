@@ -113,12 +113,19 @@ pip install -r requirements.txt
 ```
 
 ### 3. Run the Test Suite
-Execute the consolidated verification tests:
+# Execute the consolidated verification tests:
 ```bash
 python tests/test_digest_notifications.py
 ```
 
-### 4. Run the Web Dashboard Control Panel
+### 4. Run the Performance Benchmark (optional)
+# Reproduce the pipeline timing/output-size figures quoted in the project report:
+```bash
+python tests/benchmark_digest_pipeline.py
+```
+Optional flags: `--runs N` (default 200) and `--ref-date YYYY-MM-DD` (default 2026-06-27). This is a manual benchmarking script, not part of the automated test suite -- it measures wall-clock time for each pipeline stage against the current mock dataset, on a single process, on whatever machine it's run on. See the script's docstring for caveats.
+
+### 5. Run the Web Dashboard Control Panel
 To open the interactive dashboard control room:
 ```bash
 python src/digest.py --serve --port 8000
