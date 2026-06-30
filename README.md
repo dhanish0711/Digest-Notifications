@@ -96,6 +96,7 @@ Digest-Notifications/
 │       ├── index.html              # Web Dashboard HTML
 │       └── main.js                 # Web Dashboard JS
 └── tests/
+    ├── benchmark_digest_pipeline.py # Manual pipeline timing & performance benchmark
     └── test_digest_notifications.py # Consolidated unit & integration test suite (10 tests)
 ```
 
