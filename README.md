@@ -82,8 +82,11 @@ Digest-Notifications/
 │   ├── digest_builder.py           # Chronological date-bucketing logic
 │   ├── renderer.py                 # Jinja2 HTML & plain-text compilation
 │   ├── sender.py                   # Provider-agnostic batch dispatch interfaces
-│   └── templates/
-│       └── digest_template.html    # Premium responsive HTML email template
+│   ├── templates/
+│   │   └── digest_template.html    # Premium responsive HTML email template
+│   └── web/
+│       ├── index.html              # Web Dashboard HTML
+│       └── main.js                 # Web Dashboard JS
 └── tests/
     └── test_digest_notifications.py # Consolidated unit & integration test suite (10 tests)
 ```
