@@ -165,10 +165,11 @@ python src/digest.py --cli --type weekly --ref-date 2026-06-27
 
 ## 🔌 Developer Integration Guide
 
-This module is designed to plug cleanly into larger codebases.
+> [!NOTE]
+> The integration examples below (like real SendGrid/SES email dispatch or external database synchronization) are **not implemented directly inside this standalone project**. This repository functions as a self-contained simulation module. However, the codebase is designed to be easily dropped into the main Orchestrator project using the interface patterns shown below.
 
 ### 1. Programmatic Compilation
-To compile a digest programmatically in your services:
+To compile a digest programmatically in your main services:
 
 ```python
 import datetime
@@ -204,7 +205,7 @@ text_fallback = render_digest_text(payload, unsubscribe_url=unsubscribe_url)
 ```
 
 ### 2. Custom Email Provider (SES / SendGrid)
-To send digests via a real provider, implement the `EmailSenderProtocol` interface:
+To send digests via a real provider in your host project, implement the `EmailSenderProtocol` interface contract and pass the adapter to the sender:
 
 ```python
 from sender import EmailSenderProtocol, send_digest_for_recipient
