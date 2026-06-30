@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const logsList         = document.getElementById('logsList');
   const batchSizeBadge   = document.getElementById('batchSizeBadge');
   const textPreviewBox   = document.getElementById('textPreviewBox');
+  const txtDownloadBtn   = document.getElementById('txtDownloadBtn');
 
   // ── Load batch size config ────────────────────────────────────────────────
   fetch('/api/config')
@@ -128,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
       sendBtn.disabled  = true;
       sendBtn.className = 'btn btn-secondary';
       if (textPreviewBox) textPreviewBox.style.display = 'none';
+      if (txtDownloadBtn) txtDownloadBtn.style.display = 'none';
       return;
     }
 
@@ -150,6 +152,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (textPreviewBox && data.text) {
         textPreviewBox.textContent = data.text;
         textPreviewBox.style.display = 'block';
+      }
+
+      // Plain-text download button
+      if (txtDownloadBtn) {
+        txtDownloadBtn.style.display = 'inline-block';
+        txtDownloadBtn.onclick = () => {
+          window.location.href = '/api/download/txt';
+        };
       }
 
       sendBtn.disabled  = false;
@@ -180,6 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
       previewEmpty.style.display = 'flex';
       previewIframe.src = 'about:blank';
       if (textPreviewBox) { textPreviewBox.textContent = ''; textPreviewBox.style.display = 'none'; }
+      if (txtDownloadBtn) { txtDownloadBtn.style.display = 'none'; }
       currentGeneratedDigest = null;
       await loadLogs();
     } else {

@@ -500,7 +500,12 @@
 
       <!-- Plain-Text Fallback Preview -->
       <div class="panel">
-        <h2 class="panel-title"><span class="icon">📄</span>Plain-Text Fallback</h2>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+          <h2 class="panel-title" style="margin:0; padding:0; border:none;"><span class="icon">📄</span>Plain-Text Fallback</h2>
+          <button id="txtDownloadBtn" class="btn-ics" style="margin:0; display:none; padding:4px 10px; font-size:11px;">
+            <span>⬇️</span> Download Text File
+          </button>
+        </div>
         <pre id="textPreviewBox" class="text-preview"></pre>
         <p style="font-size:12px; color:var(--text-muted); margin-top:10px; line-height:1.6;">
           Every digest also generates a <strong style="color:#e2e8f0;">text/plain</strong> version
